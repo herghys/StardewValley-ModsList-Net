@@ -41,5 +41,20 @@ namespace StardewValleyModList
             otherPlayerModsFrame.Content = otherPlayerModsPage;
             modsComparisonFrame.Content = modsComparisonPage;
         }
+
+        private void TabControl_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+        }
+
+        private void header_ModsComparison_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

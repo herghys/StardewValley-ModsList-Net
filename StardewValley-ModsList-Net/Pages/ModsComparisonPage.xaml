@@ -20,7 +20,7 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Exist" Width="40" CanUserSort="True" CanUserResize="True" Binding="{Binding Exist}"/>
+                <DataGridCheckBoxColumn Header="Exist" Width="40" CanUserSort="True" CanUserResize="True" Binding="{Binding Exist}"/>
                 <DataGridTextColumn Header="Mod Name" Width="100" CanUserSort="True" CanUserResize="True" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Author" Width="70" CanUserSort="True" CanUserResize="True" Binding="{Binding Author}"/>
                 <DataGridTextColumn Header="Description" Width="200" CanUserSort="True" CanUserResize="True" Binding="{Binding Description}"/>

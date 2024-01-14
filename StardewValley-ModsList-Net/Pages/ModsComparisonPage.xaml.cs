@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace StardewValleyModList.Pages
 {
@@ -23,6 +25,7 @@ namespace StardewValleyModList.Pages
     /// </summary>
     public partial class ModsComparisonPage : Page
     {
+        List<ModsDataModel> comparedData = new();
         public ModsComparisonPage()
         {
             InitializeComponent();
@@ -36,8 +39,90 @@ namespace StardewValleyModList.Pages
 
         private void OnListPopulated()
         {
-            List<ModsDataModel> data = new();
+            Populate();
+        }
 
+        public void Populate()
+        {
+            comparedData.Clear();
+            comparedData = new();
+            List<ModsDataModel> myData = new();
+            List<ModsDataModel> otherPlayerData = new();
+
+            if (Globals.MyMods.Count != 0)
+            {
+                myData.AddRange(Globals.MyMods);
+
+                foreach (var item in myData)
+                {
+                    if (!comparedData.Exists(x => x.Name == item.Name))
+                    comparedData.Add(new ModsDataModel()
+                    {
+                        Name = item.Name,
+                        Author = item.Author,
+                        Version = item.Version,
+                        Description = item.Description,
+                        UniqueID = item.UniqueID,
+                        EntryDll = item.EntryDll,
+                        MinimumApiVersion = item.MinimumApiVersion,
+                        SMAPILink = item.SMAPILink,
+                        NexusLink = item.NexusLink,
+                        GithubLink = item.GithubLink,
+                        Exist = true
+                    }) ;
+                }
+            }
+
+            if (Globals.OtherPlayerMods.Count != 0)
+            {
+                otherPlayerData.AddRange(Globals.OtherPlayerMods);
+
+                foreach (var item in otherPlayerData)
+                {
+                    if (!comparedData.Exists(x => x.Name == item.Name))
+                    {
+                        comparedData.Add(new ModsDataModel()
+                        {
+                            Name = item.Name,
+                            Author = item.Author,
+                            Version = item.Version,
+                            Description = item.Description,
+                            UniqueID = item.UniqueID,
+                            EntryDll = item.EntryDll,
+                            MinimumApiVersion = item.MinimumApiVersion,
+                            SMAPILink = item.SMAPILink,
+                            NexusLink = item.NexusLink,
+                            GithubLink = item.GithubLink,
+                            Exist = false
+                        });
+                    }
+                }
+            }
+
+            comparedData.RemoveAll(x => x.Exist);
+            datagrid_MyMods.ItemsSource = default;
+
+            for (int i = 0; i < comparedData.Count; i++)
+            {
+                datagrid_MyMods.Items.Add(comparedData[i]);
+            }
+
+            RefreshUI();
+        }
+
+        public void RefreshUI()
+        {
+            for (int i = 0; i < comparedData.Count; i++)
+            {
+                var row = datagrid_MyMods.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
+                if (row != null)
+                {
+                    if (comparedData[i].Exist)
+                        row.Background = new SolidColorBrush(Colors.PaleGreen);
+                    else
+                        row.Background = new SolidColorBrush(Colors.PaleVioletRed);
+                }
+            }
         }
     }
 }

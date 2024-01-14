@@ -28,12 +28,12 @@ namespace StardewValleyModList.DataModels
         public string Author { get; set; }
         public string Version { get; set; }
         public string Description { get; set; }
-        public string UniqueID { get; set; }
-        public string EntryDll { get; set; }
-        public string MinimumApiVersion { get; set; }
         public string SMAPILink { get; set; }
         public string NexusLink { get; set; }
         public string GithubLink { get; set; }
+        public string UniqueID { get; set; }
+        public string EntryDll { get; set; }
+        public string MinimumApiVersion { get; set; }
 
         public ModsDataModel() { }
 

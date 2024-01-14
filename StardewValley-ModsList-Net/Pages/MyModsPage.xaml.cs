@@ -89,7 +89,7 @@ namespace StardewValleyModList.Pages
                 checkbox_SMAPIExist.IsChecked = true;
 
             checkbox_ModsFolderExist.IsChecked = true;
-            var baseModsData = await ModGetter.SearchMods(Globals.StardewModsDirectory);
+            var baseModsData = ModGetter.SearchMods(Globals.StardewModsDirectory);
 
             ModsData = baseModsData.ConvertAll(data => (ModsDataModel)data);
             Globals.MyMods = ModsData;
@@ -97,6 +97,7 @@ namespace StardewValleyModList.Pages
             foreach (var item in ModsData)
             {
                 datagrid_MyMods.Items.Add(item);
+                await Task.Yield();
             }
 
             GlobalEvents.OnListPopulated?.Invoke();
