@@ -1,4 +1,7 @@
-﻿using System;
+﻿using StardewValleyModList.DataModels;
+using StardewValleyModList.Events;
+using StardewValleyModList.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +26,18 @@ namespace StardewValleyModList.Pages
         public ModsComparisonPage()
         {
             InitializeComponent();
+            EventSubs();
         }
 
+        private void EventSubs()
+        {
+            GlobalEvents.OnListPopulated += OnListPopulated;
+        }
 
+        private void OnListPopulated()
+        {
+            List<ModsDataModel> data = new();
+
+        }
     }
 }

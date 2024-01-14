@@ -23,6 +23,7 @@ namespace StardewValleyModList.DataModels
 
     public class ModsDataModel
     {
+        public bool Exist { get; set; } = false;
         public string Name { get; set; }
         public string Author { get; set; }
         public string Version { get; set; }
@@ -34,7 +35,7 @@ namespace StardewValleyModList.DataModels
         public string NexusLink { get; set; }
         public string GithubLink { get; set; }
 
-        ModsDataModel() { }
+        public ModsDataModel() { }
 
         public ModsDataModel(string name, string author, string version, string description, string uniqueID, string entryDll, string minimumApiVersion, string smapiLink, string nexusLink, string githubLink)
         {

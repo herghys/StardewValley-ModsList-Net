@@ -9,6 +9,25 @@
       Title="ModsComparisonPage">
 
     <Grid>
-        
+        <Button x:Name="button_OpenLink" Content="Open Link" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="150" FontSize="15"/>
+        <DataGrid x:Name="datagrid_MyMods" Margin="10,41,10,10">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Medium"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Exist" Width="40" CanUserSort="True" CanUserResize="True" Binding="{Binding Exist}"/>
+                <DataGridTextColumn Header="Mod Name" Width="100" CanUserSort="True" CanUserResize="True" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Author" Width="70" CanUserSort="True" CanUserResize="True" Binding="{Binding Author}"/>
+                <DataGridTextColumn Header="Description" Width="200" CanUserSort="True" CanUserResize="True" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Nexus Mods" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding NexusLink}"/>
+                <DataGridTextColumn Header="Github" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding GithubLink}"/>
+                <DataGridTextColumn Header="SMAPI Link" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding SMAPILink}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

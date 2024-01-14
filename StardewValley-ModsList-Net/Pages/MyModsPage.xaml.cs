@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using StardewValleyModList.DataModels;
+using StardewValleyModList.Events;
 using StardewValleyModList.Helper;
 using System;
 using System.Collections.Generic;
@@ -51,8 +52,8 @@ namespace StardewValleyModList.Pages
                 FileName = "My Stardew Mods",
                 RestoreDirectory = false,
                 CheckPathExists = true,
-                DefaultExt = "json",
-                Filter = "JSON File (*json)|*.json;*.JSON",
+                DefaultExt = "modslist",
+                Filter = "Modslist File (*modslist)|*.modslist",
                 Title = "Save Mods list",
                 OverwritePrompt = true,
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
@@ -97,6 +98,8 @@ namespace StardewValleyModList.Pages
             {
                 datagrid_MyMods.Items.Add(item);
             }
+
+            GlobalEvents.OnListPopulated?.Invoke();
         }
     }
 }
