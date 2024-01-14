@@ -1,0 +1,36 @@
+﻿<Page x:Class="StardewValleyModList.Pages.MyModsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StardewValleyModList.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MyModsPage">
+
+    <Grid>
+        <Button x:Name="button_SelectGamePath" Content="Select Game Path" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="150" FontSize="15" Click="button_SelectGamePath_Click"/>
+        <CheckBox x:Name="checkbox_SMAPIExist" Content="SMAPI Exist" HorizontalAlignment="Left" Margin="165,16,0,0" VerticalAlignment="Top" FontSize="15" VerticalContentAlignment="Center" IsEnabled="False"/>
+        <CheckBox x:Name="checkbox_ModsFolderExist" Content="Mods Folder Exist" HorizontalAlignment="Left" Margin="267,17,0,0" VerticalAlignment="Top" FontSize="15" VerticalContentAlignment="Center" IsEnabled="False"/>
+        <Button x:Name="button_ExportModData" Content="Export Mod" Margin="0,12,10,0" VerticalAlignment="Top" FontSize="15" HorizontalAlignment="Right" Width="150" Click="button_ExportModData_Click"/>
+        <TextBox x:Name="textbox_GamePath" IsEnabled="False" Margin="10,41,10,0" TextWrapping="Wrap" Text="Game Path" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="30" FontSize="15"/>
+        <DataGrid x:Name="datagrid_MyMods" Margin="10,76,10,10">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Medium"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mod Name" Width="100" CanUserSort="True" CanUserResize="True" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Author" Width="70" CanUserSort="True" CanUserResize="True" Binding="{Binding Author}"/>
+                <DataGridTextColumn Header="Description" Width="200" CanUserSort="True" CanUserResize="True" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Nexus Mods" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding NexusLink}"/>
+                <DataGridTextColumn Header="Github" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding GithubLink}"/>
+                <DataGridTextColumn Header="SMAPI Link" Width="*" CanUserSort="True" CanUserResize="True" Binding="{Binding SMAPILink}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
